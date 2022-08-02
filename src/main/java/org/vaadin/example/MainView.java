@@ -1,5 +1,6 @@
 package org.vaadin.example;
 
+import com.vaadin.flow.component.html.Label;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vaadin.flow.component.Key;
@@ -40,9 +41,9 @@ public class MainView extends VerticalLayout {
     public MainView(@Autowired GreetService service) {
 
         // Use TextField for standard text input
-        TextField textField = new TextField("Txpe your name and push the Button or hit Enter, please.");
+        TextField textField = new TextField("");
+        Label label = new Label("Type your name and push the button or hit enter, please.");
         textField.addThemeName("bordered");
-
         // Button click listeners can be defined as lambda expressions
         Button button = new Button("Say hello!",
                 e -> Notification.show(service.greet(textField.getValue())));
@@ -59,7 +60,7 @@ public class MainView extends VerticalLayout {
         // shared-styles.css.
         addClassName("centered-content");
 
-        add(textField, button);
+        add(label, textField, button);
     }
 
 }
